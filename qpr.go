@@ -2,6 +2,7 @@ package qpr
 
 import (
     "fmt"
+    "io"
     "bytes"
 )
 
@@ -53,7 +54,7 @@ func (qp *QPEncoder) encodeLine(encoded *bytes.Buffer, line *[]byte) {
 		// set counter to next line's char length 
 		buf.Write(enc)
 	}
-	encoded.Write(buf.Next(1000))
+    io.Copy(encoded, &buf)
 	
 } 
 
