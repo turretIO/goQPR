@@ -48,7 +48,7 @@ func (qp *QPEncoder) encodeLine(encoded *bytes.Buffer, line *[]byte) {
 		}
 		qp.counter += encLen
 		if qp.counter > maxlinesize-1 {
-			buf.Write([]byte("=\n")) // write newline before enc
+			buf.Write([]byte("=\r\n")) // write newline before enc
 			qp.counter = encLen // reset counter after newline
 		}
 		// set counter to next line's char length 
